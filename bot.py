@@ -1,5 +1,6 @@
 import logging
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
+import  settings
 
 logging.basicConfig(filename='bot.log', level=logging.INFO)
 # Настройки прокси
@@ -17,7 +18,7 @@ def talk_to_me(update, context):
     
 def main():
     # Создаем бота и передаем ему ключ для авторизации на серверах Telegram
-    mybot = Updater("7133966741:AAF8tH51ZfWjoEs5nz8STG699MSNxr-oeJw", use_context=True) #)
+    mybot = Updater(settings.API_KEY , use_context=True) #)
    
     dp = mybot.dispatcher
     dp.add_handler(CommandHandler("start", greet_user))   
@@ -31,4 +32,5 @@ def main():
     mybot.idle()
 
 # Вызываем функцию main() - именно эта строчка запускает бота
-main()
+if __name__ == "__main__":
+    main()
